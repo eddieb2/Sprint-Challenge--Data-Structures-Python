@@ -52,14 +52,29 @@ class LinkedList:
 
         print(llstr)
 
+    def print_helper(self, node, name):
+        if node is None:
+            print(f'{name}: None')
+        else:
+            print(f'{name}: {node.value}')
+
     def reverse_list(self, node, prev=None):
+        # set current iteration to the starting node
         itr = node
 
+        # while itr is not None, do the following
         while itr:
+            # Save the next node to a var so we can reference later
             next = itr.next_node
             itr.next_node = prev
 
+            self.print_helper(prev, 'prev')
+            self.print_helper(itr, 'itr')
+            self.print_helper(next, 'next')
+            print('\n')
+
             prev = itr
+            # Set itr to the next node to keep the loop moving forward 1 -> 2 and so on
             itr = next
 
 
@@ -70,6 +85,6 @@ sll.add_to_head(4)
 sll.add_to_head(3)
 sll.add_to_head(2)
 sll.add_to_head(1)
-sll.print()
+# sll.print()
 sll.reverse_list(sll.head)
-sll.print()
+# sll.print()
